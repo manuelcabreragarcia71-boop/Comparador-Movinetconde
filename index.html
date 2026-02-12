@@ -29,14 +29,14 @@
             background-color: var(--bg-light);
         }
 
-        /* --- ENCABEZADO (Flotante) --- */
+        /* --- ENCABEZADO --- */
         header {
-            background-color: rgba(0, 0, 0, 0.9); /* Negro semi-transparente */
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 0.8rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed; /* Fijo arriba */
+            position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -67,38 +67,36 @@
             color: var(--primary-color);
         }
 
-        /* --- CONTENEDOR PRINCIPAL (PANTALLA DIVIDIDA) --- */
+        /* --- CONTENEDOR PRINCIPAL --- */
         .split-container {
             display: flex;
-            min-height: 100vh; /* Ocupa toda la altura de la pantalla */
-            padding-top: 70px; /* Espacio para el header fijo */
+            min-height: 100vh;
+            padding-top: 70px;
         }
 
-        /* PARTE IZQUIERDA: TEXTO Y FORMULARIO */
         .left-panel {
-            flex: 1; /* Ocupa el espacio restante */
-            background-color: #0d0d0d; /* Fondo casi negro */
+            flex: 1;
+            background-color: #0d0d0d;
             padding: 2rem 5%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Centrar contenido */
+            align-items: center;
             color: var(--text-light);
         }
 
-        /* PARTE DERECHA: FOTO DEL CHICO */
         .right-panel {
-            flex: 1; /* Ocupa el 50% aprox */
-            background-image: url('foto.png');
-            background-size: cover; /* La imagen cubre todo el espacio */
-            background-position: center top; /* Centra la cara del chico */
+            flex: 1;
+            /* Asegúrate de tener la imagen 'foto.png' en la misma carpeta */
+            background-image: url('foto.png'); 
+            background-size: cover;
+            background-position: center top;
             background-repeat: no-repeat;
-            min-height: 50vh; /* Altura mínima en móviles */
+            min-height: 50vh;
         }
 
-        /* --- CONTENIDO DEL HERO --- */
         .hero-content {
-            max-width: 550px; /* Ancho máximo para que no se estire demasiado */
+            max-width: 550px;
             width: 100%;
         }
 
@@ -172,6 +170,10 @@
             cursor: pointer;
             transition: background 0.3s;
             text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-submit:hover {
@@ -208,7 +210,6 @@
             margin-bottom: 1rem;
         }
 
-        /* --- FOOTER --- */
         footer {
             background-color: #000;
             color: #888;
@@ -217,22 +218,18 @@
             font-size: 0.9rem;
         }
 
-        /* --- RESPONSIVE (MÓVIL) --- */
         @media (max-width: 900px) {
             .split-container {
-                flex-direction: column-reverse; /* En móvil, primero la foto arriba, luego el form */
+                flex-direction: column-reverse;
                 padding-top: 60px;
             }
-
             .right-panel {
-                min-height: 40vh; /* Altura de la foto en móvil */
+                min-height: 40vh;
                 width: 100%;
             }
-
             .left-panel {
                 padding: 3rem 5%;
             }
-
             .hero-content h1 {
                 font-size: 2rem;
             }
@@ -257,27 +254,23 @@
 
                 <div class="form-container">
                     <h2>Mejorar mi factura</h2>
-                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-bottom: 15px;">Estudio gratuito y sin compromiso</p>
+                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-bottom: 15px;">Estudio gratuito (Tablet Tienda)</p>
                     
-                    <form action="https://formsubmit.co/movinetconde@gmail.com" method="POST">
-                        <input type="hidden" name="_cc" value="manucg618@gmail.com">
-                        <input type="hidden" name="_subject" value="NUEVO CLIENTE - Web Movinetconde">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="">
-
+                    <form id="whatsappForm">
+                        
                         <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" name="Nombre" placeholder="Tu nombre" required>
+                            <label for="name">Nombre del Cliente</label>
+                            <input type="text" id="name" placeholder="Tu nombre" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" name="Teléfono" placeholder="613 509 309" required>
+                            <label for="clientPhone">Teléfono de Contacto</label>
+                            <input type="tel" id="clientPhone" placeholder="Ej: 600 123 456" required>
                         </div>
 
                         <div class="form-group">
                             <label for="company">Compañía actual</label>
-                            <select id="company" name="Compañía_Actual">
+                            <select id="company">
                                 <option value="No especifica">Selecciona una opción</option>
                                 <option value="Movistar">Movistar</option>
                                 <option value="Vodafone">Vodafone</option>
@@ -288,7 +281,12 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="btn-submit">SOLICITAR AHORA</button>
+                        <button type="submit" class="btn-submit">
+                            <span>ENVIAR DATOS</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.001.575 1.973.893 3.282.893 3.182 0 5.768-2.587 5.769-5.766.001-3.184-2.575-5.77-5.765-5.776zm9.265 5.768c0 5.097-4.148 9.243-9.266 9.243-1.641 0-3.181-.433-4.537-1.189l-5.493 1.442 1.467-5.348c-.838-1.428-1.281-3.085-1.282-4.821C2.185 6.173 6.332 2.028 11.451 2.028s9.265 4.148 9.265 9.244h.58z"/>
+                            </svg>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -319,9 +317,36 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Comparador Movinetconde. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Comparador Movinetconde. Todos los derechos reservados.</p>
         <p>Contacto: 613 509 309 | movinetconde@gmail.com</p>
     </footer>
+
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            // 1. Obtener valores que el cliente escribe en la tablet
+            var name = document.getElementById('name').value;
+            var clientPhone = document.getElementById('clientPhone').value; // El número del cliente
+            var company = document.getElementById('company').value;
+            
+            // 2. Número de teléfono de la OFICINA (donde llega el mensaje)
+            var officeNumber = "34613509309"; 
+
+            // 3. Crear el mensaje que se enviará desde la tablet
+            var text = "*NUEVO CLIENTE DESDE TABLET* 📱\n\n" +
+                       "👤 *Nombre:* " + name + "\n" +
+                       "📞 *Teléfono Cliente:* " + clientPhone + "\n" +
+                       "🏢 *Compañía actual:* " + company + "\n\n" +
+                       "Por favor, contactadme para mejorar mi factura.";
+
+            // 4. Crear la URL
+            var url = "https://wa.me/" + officeNumber + "?text=" + encodeURIComponent(text);
+
+            // 5. Abrir WhatsApp
+            window.open(url, '_blank');
+        });
+    </script>
 
 </body>
 </html>
