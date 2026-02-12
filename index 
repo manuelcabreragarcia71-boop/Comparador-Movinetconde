@@ -89,7 +89,7 @@
         /* PARTE DERECHA: FOTO DEL CHICO */
         .right-panel {
             flex: 1; /* Ocupa el 50% aprox */
-            background-image: url('foto.png');
+            background-image: url('foto.jpg');
             background-size: cover; /* La imagen cubre todo el espacio */
             background-position: center top; /* Centra la cara del chico */
             background-repeat: no-repeat;
